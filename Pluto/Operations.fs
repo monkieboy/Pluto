@@ -18,4 +18,5 @@ module Operations =
     | B when rover.Y = 0 -> { rover with Y = 100 }
     | R when rover.Heading = N -> { rover with Heading = E }
     | L when rover.Heading = N -> { rover with Heading = W }
+    | L when rover.Heading = E -> { rover with Heading = N }
     | _ -> failwith "Unexpected command"
