@@ -22,4 +22,5 @@ module Operations =
     | R when rover.Heading = E -> { rover with Heading = S }
     | R when rover.Heading = S -> { rover with Heading = W }
     | L when rover.Heading = S -> { rover with Heading = E }
+    | L when rover.Heading = W -> { rover with Heading = S }
     | _ -> failwith "Unexpected command"
