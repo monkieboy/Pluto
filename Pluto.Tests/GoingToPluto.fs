@@ -134,4 +134,17 @@ let tests =
 
       Expect.equal command F "Command should be parsed to F"
 
+
+    testCase "Parsing a command string for backward" <| fun _ ->
+      let command = 
+        match parseCommand "B" with
+        | Ok x -> x
+        | Error e -> raise e
+
+      Expect.equal command B "Command should be parsed to B"
+
+    testCase "Parsing a bad char should alert" <| fun _ ->
+      let command = parseCommand "X"
+
+      Expect.isError command "Command should be fail"
   ]
