@@ -13,5 +13,5 @@ let tests =
 
       let loc = rover.getLoc()
 
-      Expect.equal loc { X = 0; Y = 0; Heading = N } "I compute, therefore I am."
+      Expect.equal loc { X = 0; Y = 0; Heading = N } "Starting location after landing should be 0,0 N"
   ]
