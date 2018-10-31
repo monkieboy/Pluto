@@ -59,4 +59,12 @@ let tests =
       let loc = rover'.getLoc ()
       
       Expect.equal loc { X = 0; Y = 0; Heading = N } "Location after turning left while facing east should be north"
+
+
+    testCase "Turning right while starting facing east now facing right" <| fun _ ->
+      let rover' = sendCommand R rover |> sendCommand R
+
+      let loc = rover'.getLoc ()
+      
+      Expect.equal loc { X = 0; Y = 0; Heading = S } "Location after turning right while facing east should be south"
   ]
