@@ -13,6 +13,7 @@ module Operations =
 
   let sendCommand move rover =
     match move with
+    | F when rover.Y = rover.OnPlanet.YLength -> { rover with Y = 0 }
     | F -> { rover with Y = rover.Y + 1 }
     | B when rover.Y = 0 -> { rover with Y = 100 }
     | _ -> failwith "Unexpected command"

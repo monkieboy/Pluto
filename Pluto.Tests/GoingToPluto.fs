@@ -29,5 +29,12 @@ let tests =
       let loc = rover'.getLoc()
 
       Expect.equal loc { X = 0; Y = 100; Heading = N } "Location after moving backward should be 0,100 N"
+
+    testCase "Move forward from 0,100 while facing north so new loc is 0,0 N" <| fun _ ->
+      let rover' = sendCommand B rover |> sendCommand F
+
+      let loc = rover'.getLoc()
+
+      Expect.equal loc { X = 0; Y = 0; Heading = N } "Location after moving backward should be 0,100 N"
       
   ]
