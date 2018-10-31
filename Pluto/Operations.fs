@@ -27,3 +27,11 @@ module Operations =
     | L when rover.Heading = W -> { rover with Heading = S }
     | R when rover.Heading = W -> { rover with Heading = N }
     | _ -> failwith "Unexpected command"
+  
+  let parseCommand cmd =
+    match cmd with
+    | "F" | "f" -> Ok F
+    | "B" | "l" -> Ok B
+    | "L" | "l" -> Ok L
+    | "R" | "r" -> Ok R
+    | _ -> Error <| exn "Unknown Command"

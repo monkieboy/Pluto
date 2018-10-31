@@ -116,4 +116,22 @@ let tests =
       let loc = rover'.getLoc ()
       
       Expect.equal loc { X = 0; Y = 0; Heading = N } "Location after turning right while facing west should be north"
+
+    testCase "Parsing a command string for forward" <| fun _ ->
+      let command = 
+        match parseCommand "F" with
+        | Ok x -> x
+        | Error e -> raise e
+
+      Expect.equal command F "Command should be parsed to F"
+
+
+    testCase "Parsing a command string for forward (lowercase)" <| fun _ ->
+      let command = 
+        match parseCommand "f" with
+        | Ok x -> x
+        | Error e -> raise e
+
+      Expect.equal command F "Command should be parsed to F"
+
   ]
