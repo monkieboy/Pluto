@@ -19,22 +19,28 @@ let tests =
     testCase "Move forward so loc is 0,1 N" <| fun _ ->
       let rover' = sendCommand F rover
 
-      let loc = rover'.getLoc()
+      let loc = rover'.getLoc ()
 
       Expect.equal loc { X = 0; Y = 1; Heading = N } "Location after moving forward should be 0,1 N"
 
     testCase "Move backward so loc is 0,100 N" <| fun _ ->
       let rover' = sendCommand B rover
 
-      let loc = rover'.getLoc()
+      let loc = rover'.getLoc ()
 
       Expect.equal loc { X = 0; Y = 100; Heading = N } "Location after moving backward should be 0,100 N"
 
     testCase "Move forward from 0,100 while facing north so new loc is 0,0 N" <| fun _ ->
       let rover' = sendCommand B rover |> sendCommand F
 
-      let loc = rover'.getLoc()
+      let loc = rover'.getLoc ()
 
       Expect.equal loc { X = 0; Y = 0; Heading = N } "Location after moving backward should be 0,100 N"
+
+    testCase "Turning right while starting facing north now facing east" <| fun _ ->
+      let rover' = sendCommand R rover
+
+      let loc = rover'.getLoc ()
       
+      Expect.equal loc { X = 0; Y = 0; Heading = E } "Location after turning right while facing north should be east"
   ]
