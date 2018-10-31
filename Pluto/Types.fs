@@ -4,6 +4,8 @@ namespace Exercise
 module Types =
   type Heading = N | E | S | W
 
+  type Move = F | B | L | R
+
   type Planet = {
       XLength : int
       YLength : int
