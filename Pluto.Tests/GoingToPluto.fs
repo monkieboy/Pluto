@@ -37,6 +37,13 @@ let tests =
 
       Expect.equal loc { X = 0; Y = 0; Heading = N } "Location after moving backward should be 0,100 N"
 
+    testCase "Move forward from 0,0 while facing west so new loc is 100,0 N" <| fun _ ->
+      let rover' = sendCommand L rover |> sendCommand F
+
+      let loc = rover'.getLoc ()
+
+      Expect.equal loc { X = 100; Y = 0; Heading = W } "Location after moving forward while facing west should be 100,0 N"
+
     testCase "Turning right while starting facing north now facing east" <| fun _ ->
       let rover' = sendCommand R rover
 

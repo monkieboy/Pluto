@@ -14,7 +14,8 @@ module Operations =
   let sendCommand move rover =
     match move with
     | F when rover.Y = rover.OnPlanet.YLength -> { rover with Y = 0 }
-    | F -> { rover with Y = rover.Y + 1 }
+    | F when rover.Heading = N -> { rover with Y = rover.Y + 1 }
+    | F when rover.X = 0 && rover.Heading = W -> { rover with X = 100 }
     | B when rover.Y = 0 -> { rover with Y = 100 }
     | R when rover.Heading = N -> { rover with Heading = E }
     | L when rover.Heading = N -> { rover with Heading = W }
